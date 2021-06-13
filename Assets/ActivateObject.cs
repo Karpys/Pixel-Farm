@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ActionUti.ActionUtilities;
 
 public class ActivateObject : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject Object;
+    public int Act;
     void Start()
     {
         
@@ -21,7 +23,9 @@ public class ActivateObject : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Object.SetActive(true);
+            if(Object)
+                Object.SetActive(true);
+            SetAction(Act, true,Character.Chara.Actions);
         }
     }
 
@@ -29,7 +33,9 @@ public class ActivateObject : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Object.SetActive(false);
+            if (Object)
+                Object.SetActive(false);
+            SetAction(Act, false,Character.Chara.Actions);
         }
     }
 }
